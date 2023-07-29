@@ -1,7 +1,8 @@
-package com.kaelesty.number_composition
+package com.kaelesty.number_composition.Presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kaelesty.number_composition.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
