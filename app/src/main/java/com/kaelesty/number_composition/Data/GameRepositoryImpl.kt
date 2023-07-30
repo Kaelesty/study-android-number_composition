@@ -11,7 +11,7 @@ import kotlin.random.Random
 class GameRepositoryImpl: GameRepository {
     override fun generateQuestion(maxSumValue: Int, ansVariantsCount: Int): Question {
         val sum = Random.nextInt(maxSumValue / 2, maxSumValue)
-        val visibleNum = Random.nextInt(maxSumValue)
+        val visibleNum = Random.nextInt(2, sum - 2)
         return Question(
             sum,
             visibleNum,
@@ -21,15 +21,16 @@ class GameRepositoryImpl: GameRepository {
 
     private fun generateOptions(sum: Int, visibleNum: Int, variantsCount: Int): List<Int> {
         val options = hashSetOf<Int>()
-        while (options.size < variantsCount - 1) {
+        options.add(sum - visibleNum)
+        while (options.size < variantsCount) {
             options.add(
                 Random.nextInt(
                     max(sum - visibleNum - variantsCount, 1),
-                    min(sum - 1, sum - visibleNum + variantsCount)
+                    min(sum - 1, sum - visibleNum + 20)
                 )
             )
         }
-        options.add(sum - visibleNum) // correct answer
+        // correct answer
         return options.toList()
     }
 

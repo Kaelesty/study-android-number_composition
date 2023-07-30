@@ -26,7 +26,7 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonGameBegin.setOnClickListener {
-
+            launchChooseLevelFragment()
         }
     }
 
@@ -35,7 +35,14 @@ class WelcomeFragment : Fragment() {
         _binding = null
     }
 
+    private fun launchChooseLevelFragment() {
+        requireActivity().supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, ChooseLevelFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
+    }
+
     companion object {
-        fun newInstance(param1: String, param2: String) = WelcomeFragment()
+        fun newInstance() = WelcomeFragment()
     }
 }

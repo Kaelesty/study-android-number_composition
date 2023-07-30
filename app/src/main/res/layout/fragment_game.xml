@@ -50,19 +50,22 @@
                 android:gravity="center"
                 android:textColor="@color/white"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_term"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
                 app:layout_constraintTop_toBottomOf="@id/tv_sum"
-                app:layout_constraintEnd_toStartOf="@id/tv_plus"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="7"
+                app:layout_constraintEnd_toStartOf="@id/tv_plus"
+                android:text="@string/que"
                 android:layout_marginTop="8dp"
-                style="@style/term_option_style"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                android:layout_marginEnd="4dp"
-                />
+                android:textSize="32sp"
+                android:background="@drawable/round_rectangle_background"
+                android:backgroundTint="@color/term_background_camo"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/white"
+                app:layout_constraintHorizontal_chainStyle="packed"/>
 
             <TextView
                 android:id="@+id/tv_plus"
@@ -93,7 +96,7 @@
                 android:textAlignment="center"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:layout_marginStart="4dp"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
