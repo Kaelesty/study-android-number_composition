@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">number_composition</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="number_composition">Number Composition</string>
+    <string name="game_description">Вам дается одно слагаемое и результат сложения, необходимо выбрать из 6 вариантов ответов правильный. Игра продолжается до истечения таймера. Для победы необходимо набрать минимальное количество (и процент) правильных ответов, которое зависит от сложности.</string>
+    <string name="game_begin">Начать</string>
+    <string name="choose_level">Выберите уровень</string>
+    <string name="text_level">ТЕСТОВЫЙ</string>
+    <string name="easy_level">ЛЁГКИЙ</string>
+    <string name="medium_level">СРЕДНИЙ</string>
+    <string name="level_hard">СЛОЖНЫЙ</string>
+    <string name="hell_level">АДСКИЙ</string>
+    <string name="que">\?</string>
+    <string name="corr_ans_count">Количество правильных ответов:</string>
+    <string name="corr_ans_percent">Процент правильных ответов:</string>
+    <string name="plus">+</string>
+    <string name="try_again">Попробовать снова</string>
 </resources>
