@@ -2,6 +2,7 @@ package com.kaelesty.number_composition.Presentation
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.kaelesty.number_composition.Data.GameRepositoryImpl
+import com.kaelesty.number_composition.Domain.Entities.GameResult
 import com.kaelesty.number_composition.Domain.Entities.GameSettings
 import com.kaelesty.number_composition.Domain.Entities.Question
 import com.kaelesty.number_composition.Domain.UseCases.GenerateQuestionUseCase
@@ -24,15 +26,7 @@ class GameFragment : Fragment() {
         get() = _binding
         ?: throw RuntimeException("Binding is null")
 
-    private lateinit var settings: GameSettings
-    private lateinit var generateQuestionUseCase: GenerateQuestionUseCase
-
-    private lateinit var currentQuestion: Question
-
-    private val repoImpl: GameRepositoryImpl = GameRepositoryImpl()
-
-    private var answerCount: Int = 0
-    private var correctAnswerCount: Int = 0
+    private lateinit var viewModel: GameViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,102 +40,77 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        settings = requireArguments().getSerializable(BUNDLE_TAG_SETTINGS) as GameSettings
-
-        generateQuestionUseCase = GenerateQuestionUseCase(repoImpl)
-
-        setupQuestion()
+        initViewModel()
+        viewModel.gameBegin()
     }
 
-    fun handleAnswer(pickedVariant: Int) {
-        answerCount++
-
-        var isAnswerCorrect: Boolean
-
-        with(currentQuestion) {
-            isAnswerCorrect = sum == options[pickedVariant] + visibleNum
-        }
-
-        if (isAnswerCorrect) {
-            correctAnswerCount++
-        }
-
-        setupQuestion()
-    }
-
-
-    private fun setupQuestion() {
-        currentQuestion = generateQuestionUseCase(settings.maxSumValue)
-
+    private fun initViewModel() {
+        viewModel = GameViewModelFactory(
+            requireActivity().application,
+            arguments?.getSerializable(BUNDLE_TAG_SETTINGS) as GameSettings
+        )
+            .create(GameViewModel::class.java)
         with(binding) {
+            with(viewModel) {
+                question.observe(requireActivity()) {
+                    tvSum.text = it.sum.toString()
+                    tvTerm.text = it.visibleNum.toString()
 
-            tvSum.text = currentQuestion.sum.toString()
-            tvTerm.text = currentQuestion.visibleNum.toString()
+                    val variants = listOf(variant1, variant2, variant3, variant4, variant5, variant6)
+                    for ((i, variant) in variants.withIndex()) {
+                        variant.text = it.options[i].toString()
+                        variant.setOnClickListener {
+                            viewModel.handleAnswer(
+                                tvSum.text as String,
+                                tvTerm.text as String,
+                                variant.text as String
+                            )
+                        }
+                    }
+                }
 
-            with(tvCorrectAnsCount) {
-                text = "${correctAnswerCount.toString()}/${settings.minCorrectAnswersCount}"
-                updateStatColor(this@with, correctAnswerCount >= settings.minCorrectAnswersCount)
-            }
+                corrAnsCountStat.observe(requireActivity()) {
+                    tvCorrectAnsCount.text = it.displayableString
+                    Stylist.updateStatColor(tvCorrectAnsCount, it.isPositive)
+                }
 
-            with(tvCorrectAnsPercent) {
-                val percent: Int = ((correctAnswerCount.toFloat() / answerCount.toFloat()) * 100).toInt()
-                text = "${percent.toString()}/${settings.minCorrectAnswersPercent}"
-                updateStatColor(this@with, percent >= settings.minCorrectAnswersPercent)
-            }
+                corrAnsPercentStat.observe(requireActivity()) {
+                    tvCorrectAnsPercent.text = it.displayableString
+                    Stylist.updateStatColor(tvCorrectAnsPercent, it.isPositive)
+                }
 
-            with(variant1) {
-                text = currentQuestion.options[0].toString()
-                setOnClickListener {
-                    handleAnswer(0)
+                time.observe(requireActivity()) {
+                    tvTimer.text = it
+                }
+
+                gameOver.observe(requireActivity()) {
+                    gameOver(it)
                 }
             }
-
-            with(variant2){
-                text = currentQuestion.options[1].toString()
-                setOnClickListener {
-                    handleAnswer(1)
-                }
-            }
-
-            with(variant3){
-                text = currentQuestion.options[2].toString()
-                setOnClickListener {
-                    handleAnswer(3)
-                }
-            }
-
-            with(variant4){
-                text = currentQuestion.options[3].toString()
-                setOnClickListener {
-                    handleAnswer(3)
-                }
-            }
-
-            with(variant5){
-                text = currentQuestion.options[4].toString()
-                setOnClickListener {
-                    handleAnswer(4)
-                }
-            }
-
-            with(variant6){
-                text = currentQuestion.options[5].toString()
-                setOnClickListener {
-                    handleAnswer(5)
-                }
-            }
-
         }
     }
 
-    private fun updateStatColor(tv: TextView, isPositive: Boolean) {
-        with(tv) {
-            setTextColor(if (isPositive) {
-                ContextCompat.getColor(context, android.R.color.holo_green_light)
-            }
-            else {
-                ContextCompat.getColor(context, android.R.color.holo_red_light)
-            })
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.cancelTimer()
+    }
+
+    private fun gameOver(win: Boolean) {
+
+        val fragment = GameOverFragment.newInstance(
+            GameResult(
+                win,
+                viewModel.corrAnsCountStat.value ?: throw RuntimeException("CountStat is null"),
+                viewModel.corrAnsPercentStat.value ?: throw RuntimeException("PercentStat is null")
+            )
+        )
+
+        with(requireActivity().supportFragmentManager) {
+            popBackStack()
+            beginTransaction()
+                .add(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)
+                .commit()
         }
     }
 
