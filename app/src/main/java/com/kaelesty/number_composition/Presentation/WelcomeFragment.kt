@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.kaelesty.number_composition.R
 import com.kaelesty.number_composition.databinding.FragmentWelcomeBinding
 
@@ -36,13 +37,10 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun launchChooseLevelFragment() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainer, ChooseLevelFragment.newInstance())
-            .addToBackStack("LevelChoosing")
-            .commit()
+        findNavController().navigate(R.id.action_welcomeFragment_to_chooseLevelFragment)
     }
 
     companion object {
-        fun newInstance() = WelcomeFragment()
+
     }
 }

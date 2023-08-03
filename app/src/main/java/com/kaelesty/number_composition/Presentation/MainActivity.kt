@@ -2,15 +2,12 @@ package com.kaelesty.number_composition.Presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
 import com.kaelesty.number_composition.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainer, WelcomeFragment.newInstance())
-            .commit()
     }
 }

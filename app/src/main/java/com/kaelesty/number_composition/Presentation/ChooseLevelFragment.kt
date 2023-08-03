@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.kaelesty.number_composition.Data.GameRepositoryImpl
 import com.kaelesty.number_composition.Domain.Entities.Level
 import com.kaelesty.number_composition.Domain.UseCases.GetGameSettingsUseCase
@@ -58,16 +59,15 @@ class ChooseLevelFragment : Fragment() {
     private fun launchGameFragment(level: Level) {
         var settings = getGameSettingsUseCase(level)
 
-        val fragment = GameFragment.newInstance(settings)
-
-        requireActivity().supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainer, fragment)
-            .addToBackStack("GameFragment")
-            .commit()
+        findNavController().navigate(
+            R.id.action_chooseLevelFragment_to_gameFragment,
+            Bundle().apply {
+                putParcelable(GameFragment.BUNDLE_TAG_SETTINGS, settings)
+            }
+        )
     }
 
     companion object {
 
-        fun newInstance() = ChooseLevelFragment()
     }
 }

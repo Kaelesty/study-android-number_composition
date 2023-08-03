@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.kaelesty.number_composition.Data.GameRepositoryImpl
 import com.kaelesty.number_composition.Domain.Entities.GameResult
 import com.kaelesty.number_composition.Domain.Entities.GameSettings
@@ -97,33 +98,23 @@ class GameFragment : Fragment() {
 
     private fun gameOver(win: Boolean) {
 
-        val fragment = GameOverFragment.newInstance(
-            GameResult(
-                win,
-                viewModel.corrAnsCountStat.value ?: throw RuntimeException("CountStat is null"),
-                viewModel.corrAnsPercentStat.value ?: throw RuntimeException("PercentStat is null")
-            )
+        val result = GameResult(
+            win,
+            viewModel.corrAnsCountStat.value ?: throw RuntimeException("CountStat is null"),
+            viewModel.corrAnsPercentStat.value ?: throw RuntimeException("PercentStat is null")
         )
 
-        with(requireActivity().supportFragmentManager) {
-            popBackStack()
-            beginTransaction()
-                .add(R.id.fragmentContainer, fragment)
-                .addToBackStack(null)
-                .commit()
-        }
+        findNavController().navigate(
+            R.id.action_gameFragment_to_gameOverFragment,
+            Bundle().apply {
+                putParcelable(GameOverFragment.BUNDLE_TAG_GAME_RESULT, result)
+            }
+        )
     }
 
     companion object {
 
-        private const val BUNDLE_TAG_SETTINGS = "settings"
+        const val BUNDLE_TAG_SETTINGS = "settings"
 
-        fun newInstance(settings: GameSettings): GameFragment {
-            return GameFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable(BUNDLE_TAG_SETTINGS, settings)
-                }
-            }
-        }
     }
 }

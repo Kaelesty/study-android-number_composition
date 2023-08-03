@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.kaelesty.number_composition.Domain.Entities.GameResult
 import com.kaelesty.number_composition.R
 import com.kaelesty.number_composition.databinding.FragmentGameOverBinding
@@ -48,7 +49,7 @@ class GameOverFragment : Fragment() {
                 )
 
                 buttonGameBegin.setOnClickListener {
-                    requireActivity().supportFragmentManager.popBackStack()
+                    findNavController().navigate(R.id.action_gameOverFragment_to_welcomeFragment)
                 }
             }
 
@@ -57,13 +58,7 @@ class GameOverFragment : Fragment() {
 
     companion object {
 
-        private const val BUNDLE_TAG_GAME_RESULT = "game_result"
+        const val BUNDLE_TAG_GAME_RESULT = "game_result"
 
-        fun newInstance(gameResult: GameResult) =
-            GameOverFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable(BUNDLE_TAG_GAME_RESULT, gameResult)
-                }
-            }
     }
 }
