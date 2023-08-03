@@ -2,6 +2,7 @@ package com.kaelesty.number_composition.Presentation
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.os.Parcelable
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -10,6 +11,7 @@ import com.kaelesty.number_composition.Data.GameRepositoryImpl
 import com.kaelesty.number_composition.Domain.Entities.GameSettings
 import com.kaelesty.number_composition.Domain.Entities.Question
 import com.kaelesty.number_composition.Domain.UseCases.GenerateQuestionUseCase
+import kotlinx.parcelize.Parcelize
 
 class GameViewModel(application: Application, val settings: GameSettings) : AndroidViewModel(application) {
 
@@ -91,5 +93,6 @@ class GameViewModel(application: Application, val settings: GameSettings) : Andr
         generateQuestion()
     }
 
-    data class Stat(val displayableString: String, val isPositive: Boolean)
+
+    @Parcelize data class Stat(val displayableString: String, val isPositive: Boolean) : Parcelable
 }

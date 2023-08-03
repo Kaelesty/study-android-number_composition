@@ -47,7 +47,7 @@ class GameFragment : Fragment() {
     private fun initViewModel() {
         viewModel = GameViewModelFactory(
             requireActivity().application,
-            arguments?.getSerializable(BUNDLE_TAG_SETTINGS) as GameSettings
+            arguments?.getParcelable<GameSettings>(BUNDLE_TAG_SETTINGS) as GameSettings
         )
             .create(GameViewModel::class.java)
         with(binding) {
@@ -121,7 +121,7 @@ class GameFragment : Fragment() {
         fun newInstance(settings: GameSettings): GameFragment {
             return GameFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(BUNDLE_TAG_SETTINGS, settings)
+                    putParcelable(BUNDLE_TAG_SETTINGS, settings)
                 }
             }
         }

@@ -31,7 +31,7 @@ class GameOverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(arguments?.getSerializable(BUNDLE_TAG_GAME_RESULT) as GameResult) {
+        with(arguments?.getParcelable<GameResult>(BUNDLE_TAG_GAME_RESULT) as GameResult) {
 
             with(binding) {
 
@@ -62,7 +62,7 @@ class GameOverFragment : Fragment() {
         fun newInstance(gameResult: GameResult) =
             GameOverFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(BUNDLE_TAG_GAME_RESULT, gameResult)
+                    putParcelable(BUNDLE_TAG_GAME_RESULT, gameResult)
                 }
             }
     }
