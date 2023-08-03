@@ -32,7 +32,7 @@ class GameOverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(arguments?.getParcelable<GameResult>(BUNDLE_TAG_GAME_RESULT) as GameResult) {
+        with(GameOverFragmentArgs.fromBundle(requireArguments()).gameResult) {
 
             with(binding) {
 

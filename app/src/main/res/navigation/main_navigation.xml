@@ -24,6 +24,9 @@
             android:id="@+id/action_gameFragment_to_gameOverFragment"
             app:destination="@id/gameOverFragment"
             app:popUpTo="@id/chooseLevelFragment" />
+        <argument
+            android:name="gameSettings"
+            app:argType="com.kaelesty.number_composition.Domain.Entities.GameSettings" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -44,5 +47,8 @@
             android:id="@+id/action_gameOverFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
             app:popUpTo="@id/welcomeFragment" />
+        <argument
+            android:name="gameResult"
+            app:argType="com.kaelesty.number_composition.Domain.Entities.GameResult" />
     </fragment>
 </navigation>

@@ -59,12 +59,7 @@ class ChooseLevelFragment : Fragment() {
     private fun launchGameFragment(level: Level) {
         var settings = getGameSettingsUseCase(level)
 
-        findNavController().navigate(
-            R.id.action_chooseLevelFragment_to_gameFragment,
-            Bundle().apply {
-                putParcelable(GameFragment.BUNDLE_TAG_SETTINGS, settings)
-            }
-        )
+        findNavController().navigate(ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(settings))
     }
 
     companion object {

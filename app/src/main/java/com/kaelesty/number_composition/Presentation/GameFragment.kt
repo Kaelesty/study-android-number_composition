@@ -48,7 +48,7 @@ class GameFragment : Fragment() {
     private fun initViewModel() {
         viewModel = GameViewModelFactory(
             requireActivity().application,
-            arguments?.getParcelable<GameSettings>(BUNDLE_TAG_SETTINGS) as GameSettings
+            GameFragmentArgs.fromBundle(requireArguments()).gameSettings
         )
             .create(GameViewModel::class.java)
         with(binding) {
@@ -104,12 +104,7 @@ class GameFragment : Fragment() {
             viewModel.corrAnsPercentStat.value ?: throw RuntimeException("PercentStat is null")
         )
 
-        findNavController().navigate(
-            R.id.action_gameFragment_to_gameOverFragment,
-            Bundle().apply {
-                putParcelable(GameOverFragment.BUNDLE_TAG_GAME_RESULT, result)
-            }
-        )
+        findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment(result))
     }
 
     companion object {
