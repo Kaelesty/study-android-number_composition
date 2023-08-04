@@ -26,3 +26,8 @@ fun bindStickerSrc(imageView: ImageView, win: Boolean) {
 fun bindVerdict(tv: TextView, win: Boolean) {
 	tv.text = if (win) "Победа" else "Поражение"
 }
+
+@BindingAdapter("displayInt")
+fun bindInt(tv: TextView, int: Int) {
+	tv.text = int.toString()
+}

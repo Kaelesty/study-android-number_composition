@@ -31,6 +31,9 @@ class GameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViewModel()
+        binding.vm = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         viewModel.gameBegin()
     }
 
@@ -43,8 +46,6 @@ class GameFragment : Fragment() {
         with(binding) {
             with(viewModel) {
                 question.observe(requireActivity()) {
-                    tvSum.text = it.sum.toString()
-                    tvTerm.text = it.visibleNum.toString()
 
                     val variants = listOf(variant1, variant2, variant3, variant4, variant5, variant6)
                     for ((i, variant) in variants.withIndex()) {
@@ -57,20 +58,6 @@ class GameFragment : Fragment() {
                             )
                         }
                     }
-                }
-
-                corrAnsCountStat.observe(requireActivity()) {
-                    tvCorrectAnsCount.text = it.displayableString
-                    Stylist.updateStatColor(tvCorrectAnsCount, it.isPositive)
-                }
-
-                corrAnsPercentStat.observe(requireActivity()) {
-                    tvCorrectAnsPercent.text = it.displayableString
-                    Stylist.updateStatColor(tvCorrectAnsPercent, it.isPositive)
-                }
-
-                time.observe(requireActivity()) {
-                    tvTimer.text = it
                 }
 
                 gameOver.observe(requireActivity()) {
