@@ -35,7 +35,7 @@ class GameOverFragment : Fragment() {
             gameResult = GameOverFragmentArgs.fromBundle(requireArguments()).gameResult
 
             buttonGameBegin.setOnClickListener {
-                findNavController().navigate(R.id.action_gameOverFragment_to_welcomeFragment)
+                findNavController().navigate(R.id.action_gameOverFragment_to_chooseLevelFragment)
             }
         }
     }

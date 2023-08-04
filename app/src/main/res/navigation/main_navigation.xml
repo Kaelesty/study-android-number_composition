@@ -43,12 +43,11 @@
         android:name="com.kaelesty.number_composition.presentation.GameOverFragment"
         android:label="fragment_game_over"
         tools:layout="@layout/fragment_game_over" >
-        <action
-            android:id="@+id/action_gameOverFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment"
-            app:popUpTo="@id/welcomeFragment" />
         <argument
             android:name="gameResult"
             app:argType="com.kaelesty.number_composition.domain.entities.GameResult" />
+        <action
+            android:id="@+id/action_gameOverFragment_to_chooseLevelFragment"
+            app:destination="@id/chooseLevelFragment" />
     </fragment>
 </navigation>
