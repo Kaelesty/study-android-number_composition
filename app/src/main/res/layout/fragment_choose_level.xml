@@ -1,88 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Presentation.ChooseLevelFragment"
-    android:background="@color/background_violetly_while">
-
-    <androidx.cardview.widget.CardView
+<layout>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardUseCompatPadding="true">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".presentation.ChooseLevelFragment"
+        android:background="@color/background_violetly_while">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_margin="10dp"
+            app:cardUseCompatPadding="true">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/choose_level"
-                android:textSize="16sp"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_test_level"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_background"
-                android:backgroundTint="@android:color/holo_purple"
-                android:text="@string/text_level"
-                android:textColor="@color/white"
-                android:layout_marginTop="12dp"
-                />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_easy_level"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background"
-                android:backgroundTint="@android:color/holo_green_light"
-                android:text="@string/easy_level"
-                android:textColor="@color/white"
-                android:layout_marginTop="12dp"
-                />
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_medium_level"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background"
-                android:backgroundTint="@android:color/holo_orange_light"
-                android:text="@string/medium_level"
-                android:textColor="@color/white"
-                android:layout_marginTop="12dp"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_level"
+                    android:textSize="16sp"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_hard_level"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background"
-                android:backgroundTint="@android:color/holo_orange_dark"
-                android:text="@string/level_hard"
-                android:textColor="@color/white"
-                android:layout_marginTop="12dp"
-                />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_test_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:backgroundTint="@android:color/holo_purple"
+                    android:text="@string/text_level"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="12dp"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_easy_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:backgroundTint="@android:color/holo_green_light"
+                    android:text="@string/easy_level"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="12dp"
+                    />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_hell_level"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background"
-                android:backgroundTint="@android:color/holo_red_light"
-                android:text="@string/hell_level"
-                android:textColor="@color/white"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_medium_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:backgroundTint="@android:color/holo_orange_light"
+                    android:text="@string/medium_level"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="12dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_hard_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:backgroundTint="@android:color/holo_orange_dark"
+                    android:text="@string/level_hard"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="12dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_hell_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_background"
+                    android:backgroundTint="@android:color/holo_red_light"
+                    android:text="@string/hell_level"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    />
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-</ScrollView>
+    </ScrollView>
+</layout>

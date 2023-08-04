@@ -1,9 +1,9 @@
-package com.kaelesty.number_composition.Data
+package com.kaelesty.number_composition.data
 
-import com.kaelesty.number_composition.Domain.Entities.GameSettings
-import com.kaelesty.number_composition.Domain.Entities.Level
-import com.kaelesty.number_composition.Domain.Entities.Question
-import com.kaelesty.number_composition.Domain.Repository.GameRepository
+import com.kaelesty.number_composition.domain.entities.GameSettings
+import com.kaelesty.number_composition.domain.entities.Level
+import com.kaelesty.number_composition.domain.entities.Question
+import com.kaelesty.number_composition.domain.repository.GameRepository
 import java.lang.Integer.max
 import java.lang.Math.min
 import kotlin.random.Random

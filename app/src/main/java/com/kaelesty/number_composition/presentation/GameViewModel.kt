@@ -1,16 +1,15 @@
-package com.kaelesty.number_composition.Presentation
+package com.kaelesty.number_composition.presentation
 
 import android.app.Application
 import android.os.CountDownTimer
 import android.os.Parcelable
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.kaelesty.number_composition.Data.GameRepositoryImpl
-import com.kaelesty.number_composition.Domain.Entities.GameSettings
-import com.kaelesty.number_composition.Domain.Entities.Question
-import com.kaelesty.number_composition.Domain.UseCases.GenerateQuestionUseCase
+import com.kaelesty.number_composition.data.GameRepositoryImpl
+import com.kaelesty.number_composition.domain.entities.GameSettings
+import com.kaelesty.number_composition.domain.entities.Question
+import com.kaelesty.number_composition.domain.use_cases.GenerateQuestionUseCase
 import kotlinx.parcelize.Parcelize
 
 class GameViewModel(application: Application, val settings: GameSettings) : AndroidViewModel(application) {

@@ -1,4 +1,4 @@
-package com.kaelesty.number_composition.Presentation
+package com.kaelesty.number_composition.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.kaelesty.number_composition.Data.GameRepositoryImpl
-import com.kaelesty.number_composition.Domain.Entities.Level
-import com.kaelesty.number_composition.Domain.UseCases.GetGameSettingsUseCase
-import com.kaelesty.number_composition.R
+import com.kaelesty.number_composition.data.GameRepositoryImpl
+import com.kaelesty.number_composition.domain.entities.Level
+import com.kaelesty.number_composition.domain.use_cases.GetGameSettingsUseCase
 import com.kaelesty.number_composition.databinding.FragmentChooseLevelBinding
 
 class ChooseLevelFragment : Fragment() {

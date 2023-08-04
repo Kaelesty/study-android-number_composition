@@ -1,4 +1,4 @@
-package com.kaelesty.number_composition.Presentation
+package com.kaelesty.number_composition.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.kaelesty.number_composition.Domain.Entities.GameResult
 import com.kaelesty.number_composition.R
 import com.kaelesty.number_composition.databinding.FragmentGameOverBinding
-import java.io.Serializable
 
 class GameOverFragment : Fragment() {
 
@@ -32,27 +30,13 @@ class GameOverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(GameOverFragmentArgs.fromBundle(requireArguments()).gameResult) {
+        with(binding) {
 
-            with(binding) {
+            gameResult = GameOverFragmentArgs.fromBundle(requireArguments()).gameResult
 
-                tvCorrectAnsCount.text = countStat.displayableString
-                Stylist.updateStatColor(tvCorrectAnsCount, countStat.isPositive)
-
-                tvCorrectAnsPercent.text = percentStat.displayableString
-                Stylist.updateStatColor(tvCorrectAnsPercent, percentStat.isPositive)
-
-                tvVerdict.text = if (win) "Победа" else "Поражение"
-
-                ivSticker.setImageResource(
-                    if (win) IMAGE_RESOURCE_STICKER_WIN else IMAGE_RESOURCE_STICKER_LOSE
-                )
-
-                buttonGameBegin.setOnClickListener {
-                    findNavController().navigate(R.id.action_gameOverFragment_to_welcomeFragment)
-                }
+            buttonGameBegin.setOnClickListener {
+                findNavController().navigate(R.id.action_gameOverFragment_to_welcomeFragment)
             }
-
         }
     }
 

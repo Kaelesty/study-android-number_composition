@@ -1,4 +1,4 @@
-package com.kaelesty.number_composition.Presentation
+package com.kaelesty.number_composition.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

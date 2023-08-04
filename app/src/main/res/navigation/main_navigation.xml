@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/chooseLevelFragment"
-        android:name="com.kaelesty.number_composition.Presentation.ChooseLevelFragment"
+        android:name="com.kaelesty.number_composition.presentation.ChooseLevelFragment"
         android:label="fragment_choose_level"
         tools:layout="@layout/fragment_choose_level" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.kaelesty.number_composition.Presentation.GameFragment"
+        android:name="com.kaelesty.number_composition.presentation.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
@@ -26,11 +26,11 @@
             app:popUpTo="@id/chooseLevelFragment" />
         <argument
             android:name="gameSettings"
-            app:argType="com.kaelesty.number_composition.Domain.Entities.GameSettings" />
+            app:argType="com.kaelesty.number_composition.domain.entities.GameSettings" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.kaelesty.number_composition.Presentation.WelcomeFragment"
+        android:name="com.kaelesty.number_composition.presentation.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameOverFragment"
-        android:name="com.kaelesty.number_composition.Presentation.GameOverFragment"
+        android:name="com.kaelesty.number_composition.presentation.GameOverFragment"
         android:label="fragment_game_over"
         tools:layout="@layout/fragment_game_over" >
         <action
@@ -49,6 +49,6 @@
             app:popUpTo="@id/welcomeFragment" />
         <argument
             android:name="gameResult"
-            app:argType="com.kaelesty.number_composition.Domain.Entities.GameResult" />
+            app:argType="com.kaelesty.number_composition.domain.entities.GameResult" />
     </fragment>
 </navigation>

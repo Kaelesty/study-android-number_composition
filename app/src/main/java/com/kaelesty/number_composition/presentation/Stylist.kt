@@ -1,4 +1,4 @@
-package com.kaelesty.number_composition.Presentation
+package com.kaelesty.number_composition.presentation
 
 import android.widget.TextView
 import androidx.core.content.ContextCompat

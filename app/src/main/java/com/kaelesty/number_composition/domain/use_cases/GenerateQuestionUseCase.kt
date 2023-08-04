@@ -1,7 +1,7 @@
-package com.kaelesty.number_composition.Domain.UseCases
+package com.kaelesty.number_composition.domain.use_cases
 
-import com.kaelesty.number_composition.Domain.Entities.Question
-import com.kaelesty.number_composition.Domain.Repository.GameRepository
+import com.kaelesty.number_composition.domain.entities.Question
+import com.kaelesty.number_composition.domain.repository.GameRepository
 
 class GenerateQuestionUseCase(private val repository: GameRepository) {
 

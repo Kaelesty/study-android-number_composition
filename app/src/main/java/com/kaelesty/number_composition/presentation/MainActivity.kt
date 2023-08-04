@@ -1,8 +1,7 @@
-package com.kaelesty.number_composition.Presentation
+package com.kaelesty.number_composition.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
 import com.kaelesty.number_composition.R
 
 class MainActivity : AppCompatActivity() {

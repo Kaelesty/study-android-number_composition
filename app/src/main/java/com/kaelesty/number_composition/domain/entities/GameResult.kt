@@ -1,9 +1,8 @@
-package com.kaelesty.number_composition.Domain.Entities
+package com.kaelesty.number_composition.domain.entities
 
 import android.os.Parcelable
-import com.kaelesty.number_composition.Presentation.GameViewModel
+import com.kaelesty.number_composition.presentation.GameViewModel
 import kotlinx.parcelize.Parcelize
-import java.io.Serializable
 
 @Parcelize
 data class GameResult(
